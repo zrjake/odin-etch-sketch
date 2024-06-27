@@ -9,3 +9,7 @@ div.grid-elem {
     display: flex;
     flex: 0 0 auto;
 }
+
+div.activated {
+    background-color: black;
+}

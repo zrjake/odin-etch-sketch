@@ -1,9 +1,19 @@
-container = document.querySelector(".container");
-for (let i = 0; i < 16; i++) {
-    newElem = document.createElement("div");
-    newElem.style.width = (960 / 4) + "px";
-    newElem.style.height = (960 / 4) + "px";
-    newElem.classList = "grid-elem";
-    newElem.textContent = i;
-    container.appendChild(newElem);
+const container = document.querySelector(".container");
+
+function renderNewGrid(gridRows) {
+    container.innerHTML = '';
+    for (let i = 0; i < gridRows**2; i++) {
+        let newElem = document.createElement("div");
+        newElem.style.width = (960 / gridRows) + "px";
+        newElem.style.height = (960 / gridRows) + "px";
+        newElem.classList = "grid-elem";
+        newElem.textContent = i;
+        container.appendChild(newElem);
+    }
 }
+
+container.addEventListener("mouseover", (e) => {
+    e.target.classList.add("activated");
+});
+
+renderNewGrid(50);
