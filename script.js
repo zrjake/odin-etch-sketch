@@ -12,7 +12,9 @@ function renderNewGrid(gridRows) {
 }
 
 container.addEventListener("mouseover", (e) => {
-    e.target.classList.add("activated");
+    if (!e.target.classList.contains("container")) {
+        e.target.classList.add("activated");
+    }
 });
 
 const newGridButton = document.querySelector("#reset-button");
