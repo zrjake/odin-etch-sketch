@@ -12,12 +12,19 @@ function renderNewGrid(gridRows) {
     }
 }
 
+let blackWhite = false;
+const toggleBlackWhite = document.querySelector("#black-white");
+toggleBlackWhite.addEventListener("click", () => {
+    blackWhite = !blackWhite;
+});
+
 // Grid elems should change color, but the container shouldn't.
 container.addEventListener("mouseover", (e) => {
     if (!e.target.classList.contains("container")) {
-        e.target.style.backgroundColor = getRandomColor();
+        e.target.style.backgroundColor = blackWhite ? "black"
+                                                    : getRandomColor();
         currentOpacity = Number(e.target.style.opacity);
-        if (currentOpacity <= 1) {
+        if (currentOpacity < 1) {
             e.target.style.opacity = currentOpacity + 0.1;
         }
     }
