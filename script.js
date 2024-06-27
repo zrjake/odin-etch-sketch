@@ -16,4 +16,7 @@ container.addEventListener("mouseover", (e) => {
     e.target.classList.add("activated");
 });
 
-renderNewGrid(50);
+const newGridButton = document.querySelector("#reset-button");
+newGridButton.addEventListener("click", () => {
+    renderNewGrid(prompt());
+});
