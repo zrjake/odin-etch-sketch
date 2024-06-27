@@ -1,5 +1,4 @@
 const container = document.querySelector(".container");
-let activeColor = getRandomColor();
 
 function renderNewGrid(gridRows) {
     container.innerHTML = '';
@@ -7,16 +6,20 @@ function renderNewGrid(gridRows) {
         let newElem = document.createElement("div");
         newElem.style.width = (960 / gridRows - 2) + "px";
         newElem.style.height = (960 / gridRows - 2) + "px";
+        newElem.style.opacity = 0;
         newElem.classList = "grid-elem";
         container.appendChild(newElem);
     }
-    activeColor = getRandomColor();
 }
 
 // Grid elems should change color, but the container shouldn't.
 container.addEventListener("mouseover", (e) => {
     if (!e.target.classList.contains("container")) {
-        e.target.style.backgroundColor = activeColor;
+        e.target.style.backgroundColor = getRandomColor();
+        currentOpacity = Number(e.target.style.opacity);
+        if (currentOpacity <= 1) {
+            e.target.style.opacity = currentOpacity + 0.1;
+        }
     }
 });
 
