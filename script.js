@@ -4,10 +4,9 @@ function renderNewGrid(gridRows) {
     container.innerHTML = '';
     for (let i = 0; i < gridRows**2; i++) {
         let newElem = document.createElement("div");
-        newElem.style.width = (960 / gridRows) + "px";
-        newElem.style.height = (960 / gridRows) + "px";
+        newElem.style.width = (960 / gridRows - 2) + "px";
+        newElem.style.height = (960 / gridRows - 2) + "px";
         newElem.classList = "grid-elem";
-        newElem.textContent = i;
         container.appendChild(newElem);
     }
 }
@@ -18,5 +17,9 @@ container.addEventListener("mouseover", (e) => {
 
 const newGridButton = document.querySelector("#reset-button");
 newGridButton.addEventListener("click", () => {
-    renderNewGrid(prompt());
+    let gridRows = prompt("Number of rows/cols:");
+    while (gridRows > 100 || gridRows < 1) {
+        gridRows = prompt("Please enter a number between 1 and 100:");
+    }
+    renderNewGrid(gridRows);
 });

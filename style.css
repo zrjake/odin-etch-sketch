@@ -1,13 +1,16 @@
 .container {
     display: flex;
     width: 960px;
+    height: 960px;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: #f3f4f6;
 }
 
 div.grid-elem {
     display: flex;
     flex: 0 0 auto;
+    border: 1px solid black;
 }
 
 div.activated {
